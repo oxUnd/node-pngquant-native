@@ -36,7 +36,7 @@
             'src/pngquant/lib/libimagequant.c',
         ],
         'conditions': [
-            ['OS == "win', {
+            ['OS == "win"', {
                 'libraries': [
                     '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/libpng15.lib',
                     '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/zlib.lib'],
