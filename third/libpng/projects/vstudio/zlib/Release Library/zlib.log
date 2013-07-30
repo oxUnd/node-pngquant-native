@@ -1,0 +1,35 @@
+﻿生成启动时间为 2013/7/18 12:56:34。
+     1>项目“D:\dev\node\node-images\third\libpng\projects\vstudio\zlib\zlib.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         D:\tools\ms\VC\bin\CL.exe /c /Zi /nologo /W3 /WX /Ox /Oi /Oy- /GL /D _USING_V110_SDK71_ /Gm- /EHsc /MT /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release Library\\" /Fd"Release Library\vc110.pdb" /FR"Release Library\\" /Gd /TC /analyze- /errorReport:prompt "..\..\..\..\zlib-1.2.5\adler32.c" "..\..\..\..\zlib-1.2.5\compress.c" "..\..\..\..\zlib-1.2.5\crc32.c" "..\..\..\..\zlib-1.2.5\deflate.c" "..\..\..\..\zlib-1.2.5\infback.c" "..\..\..\..\zlib-1.2.5\inffast.c" "..\..\..\..\zlib-1.2.5\inflate.c" "..\..\..\..\zlib-1.2.5\inftrees.c" "..\..\..\..\zlib-1.2.5\trees.c" "..\..\..\..\zlib-1.2.5\uncompr.c" "..\..\..\..\zlib-1.2.5\zutil.c"
+         adler32.c
+         compress.c
+         crc32.c
+         deflate.c
+         infback.c
+         inffast.c
+         inflate.c
+         inftrees.c
+         trees.c
+         uncompr.c
+         zutil.c
+       Lib:
+         D:\tools\ms\VC\bin\Lib.exe /OUT:"D:\dev\node\node-images\third\libpng\projects\vstudio\Release Library\zlib.lib" /NOLOGO /LTCG "Release Library\adler32.obj"
+         "Release Library\compress.obj"
+         "Release Library\crc32.obj"
+         "Release Library\deflate.obj"
+         "Release Library\infback.obj"
+         "Release Library\inffast.obj"
+         "Release Library\inflate.obj"
+         "Release Library\inftrees.obj"
+         "Release Library\trees.obj"
+         "Release Library\uncompr.obj"
+         "Release Library\zutil.obj"
+         zlib.vcxproj -> D:\dev\node\node-images\third\libpng\projects\vstudio\Release Library\zlib.lib
+       BscMake:
+         D:\tools\ms\VC\bin\bscmake.exe /nologo /o"D:\dev\node\node-images\third\libpng\projects\vstudio\Release Library\zlib.bsc" "Release Library\adler32.sbr" "Release Library\compress.sbr" "Release Library\crc32.sbr" "Release Library\deflate.sbr" "Release Library\infback.sbr" "Release Library\inffast.sbr" "Release Library\inflate.sbr" "Release Library\inftrees.sbr" "Release Library\trees.sbr" "Release Library\uncompr.sbr" "Release Library\zutil.sbr"
+     1>已完成生成项目“D:\dev\node\node-images\third\libpng\projects\vstudio\zlib\zlib.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.13

@@ -5,6 +5,7 @@
 /node_modules
 /test
 /.tmp
+/third
 /build
 /build.sh
 /build.js
@@ -17,3 +18,4 @@
 *.tmp
 *.cmd
 ~*
+
