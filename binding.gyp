@@ -1,6 +1,6 @@
 {
     'conditions': [
-        ['OS=='win'', {
+        ['OS=="win"', {
             'variables': {
                 'THIRD_PATH%': './third'
             }
