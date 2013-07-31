@@ -29,17 +29,13 @@
 
   ---------------------------------------------------------------------------*/
 
-#ifndef RWPNG_H
-#define RWPNG_H
+#pragma once
 
-#include "png.h"    /* libpng header; includes zlib.h */
+#include <png.h>    /* libpng header; includes zlib.h */
+#include <zlib.h>
 #include <setjmp.h>
 
-#ifndef USE_COCOA
-#define USE_COCOA 0
-#endif
-
-typedef enum {
+enum pngquant_error {
     SUCCESS = 0,
     MISSING_ARGUMENT = 1,
     READ_ERROR = 2,
@@ -52,37 +48,36 @@ typedef enum {
     LIBPNG_FATAL_ERROR = 25,
     LIBPNG_INIT_ERROR = 35,
     TOO_LOW_QUALITY = 99,
-} pngquant_error;
+};
 
-typedef struct {
+struct png24_image {
     jmp_buf jmpbuf;
     png_uint_32 width;
     png_uint_32 height;
     double gamma;
-    unsigned char **row_pointers;
-    unsigned char *rgba_data;
+    unsigned char** row_pointers;
+    unsigned char* rgba_data;
     png_size_t file_size;
-} png24_image;
+};
 
-typedef struct {
+struct png8_image {
     jmp_buf jmpbuf;
     png_uint_32 width;
     png_uint_32 height;
     double gamma;
-    unsigned char **row_pointers;
-    unsigned char *indexed_data;
+    unsigned char** row_pointers;
+    unsigned char* indexed_data;
     unsigned int num_palette;
     unsigned int num_trans;
     png_color palette[256];
     unsigned char trans[256];
-    char fast_compression;
-} png8_image;
+};
 
-typedef union {
+union png_image {
     jmp_buf jmpbuf;
     png24_image png24;
     png8_image png8;
-} rwpng_png_image;
+};
 
 struct rwpng_data {
     //FILE *fp;
@@ -95,11 +90,12 @@ struct rwpng_data {
 
 /* prototypes for public functions in rwpng.c */
 
-void rwpng_version_info(FILE *fp);
+void rwpng_version_info(FILE* fp);
 
-pngquant_error rwpng_read_image24(struct rwpng_data * in_buffer, png24_image *mainprog_ptr);
+pngquant_error rwpng_read_image24(struct rwpng_data *in_buffer, png24_image* mainprog_ptr);
+pngquant_error rwpng_write_image8(struct rwpng_data *out_buffer, png8_image* mainprog_ptr);
+pngquant_error rwpng_write_image24(struct rwpng_data *out_buffer, png24_image* mainprog_ptr);
 
-pngquant_error rwpng_write_image8(struct rwpng_data * out_buffer, png8_image *mainprog_ptr);
-pngquant_error rwpng_write_image24(struct rwpng_data * out_buffer, png24_image *mainprog_ptr);
 
-#endif
+static const double SRGB_GAMMA = 1.0/2.2;
+

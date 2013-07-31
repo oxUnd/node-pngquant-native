@@ -2,7 +2,7 @@
     'conditions': [
         ['OS=="win"', {
             'variables': {
-                'THIRD_PATH%': './third'
+                'THIRD_PATH%': 'D:/dev/node/node-pngquant-native/third/'
             }
         }]
     ],
@@ -25,15 +25,15 @@
         ],
         'sources': [
             'src/pngquant_native.cpp',
-            'src/pngquant/pngquant.c',
-            'src/pngquant/rwpng.c',
-            'src/pngquant/lib/pam.c',
-            'src/pngquant/lib/mediancut.c',
-            'src/pngquant/lib/blur.c',
-            'src/pngquant/lib/mempool.c',
-            'src/pngquant/lib/viter.c',
-            'src/pngquant/lib/nearest.c', 
-            'src/pngquant/lib/libimagequant.c',
+            'src/pngquant/pngquant.cpp',
+            'src/pngquant/getopt.c',
+            'src/pngquant/rwpng.cpp',
+            'src/pngquant/pam.cpp',
+            'src/pngquant/mediancut.cpp',
+            'src/pngquant/blur.cpp',
+            'src/pngquant/mempool.cpp',
+            'src/pngquant/viter.cpp',
+            'src/pngquant/nearest.cpp', 
         ],
         'conditions': [
             ['OS == "win"', {

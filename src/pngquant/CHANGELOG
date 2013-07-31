@@ -1,17 +1,20 @@
-version 2.0
------------
- - refactored codebase into pngquant and standalone libimagequant
- - reduced memory usage by further 30% (and more for very large images)
- - less precise remapping improving speed by 25% in higher speed settings
+
+marred-PNGquant history
+
+version 0.0.1
+ - marred-PNGquant project started (IOW rape begin)
+ - new author uses Windows OS so changed target compiler from GCC to VC++(VS2008)
+   and modified source code from C99 to C++98 since microsoft VC++ does not support C99.
+
+
+
+--------------------------------------------------------------------------------
 
 version 1.8
 -----------
  - min/max quality option (number of colors is automatically adjusted for desired quality level)
  - switched option parsing to getopt_long (syntax such as -s1 and --ext=ext is supported)
  - significantly improved performance thanks to custom partial sorting
- - optional Cocoa (Mac OS X) image reader for color profile support
- - reduced memory usage by 20%
- - remapping improved for very low number of colors
 
 version 1.7
 -----------

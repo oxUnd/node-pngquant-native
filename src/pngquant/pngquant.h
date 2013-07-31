@@ -3,12 +3,6 @@
 
 #include "rwpng.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-    int pngquant(struct rwpng_data *in_buffer, struct rwpng_data *out_buffer,int argc, char *argv[]);
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
+int pngquant_exec(struct rwpng_data *in_buffer, struct rwpng_data *out_buffer,int argc, char *argv[]);
 
 #endif
