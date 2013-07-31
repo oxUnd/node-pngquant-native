@@ -407,10 +407,12 @@ int pngquant(struct rwpng_data * in_buffer, struct rwpng_data *out_buffer, int a
         #endif
 
         pngquant_error retval = pngquant_file(in_buffer, out_buffer, &opts);
-        
+
         liq_attr_destroy(opts.liq);
 
         if (retval) {
+            out_buffer->png_data = out_buffer->png_data;
+            out_buffer->length = out_buffer->length;
             #pragma omp critical
             {
                 latest_error = retval;
@@ -440,10 +442,7 @@ int pngquant(struct rwpng_data * in_buffer, struct rwpng_data *out_buffer, int a
     liq_image_destroy(options.fixed_palette_image);
     liq_attr_destroy(options.liq);
 
-    if (latest_error != 0) {
-        
-    }
-    return SUCCESS;
+    return latest_error;
 }
 
 
@@ -784,7 +783,7 @@ int main(int argc, char *argv[]) {
     //     argv[argc-1] = NULL;
     //     argc --;
     // }
-    
+
     out_buffer = (struct rwpng_data *) malloc(sizeof(struct rwpng_data));
     memset(out_buffer, '\0', sizeof(struct rwpng_data));
     pngquant(input_buffer, out_buffer, argc, argv);
