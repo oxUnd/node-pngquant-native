@@ -5,6 +5,11 @@ node-pngquant-native是一个node的native插件，而不是调用命令行的�
 ##安装
 
     npm install -g node-pngquant-native
+    
+###环境要求
++ 编译pngquant，编译器必须支持C99
++ 符合[node-gyp环境要求](https://github.com/TooTallNate/node-gyp#installation)
++ Windows用户，如果安装失败，请clone win32分支进行编译
 
 ##使用
 
