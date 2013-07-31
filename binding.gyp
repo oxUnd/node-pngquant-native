@@ -1,11 +1,4 @@
 {
-    'conditions': [
-        ['OS=="win"', {
-            'variables': {
-                'THIRD_PATH%': './third'
-            }
-        }]
-    ],
     'targets': [{
 
         'target_name': 'pngquant_native',
@@ -37,12 +30,6 @@
         ],
         'conditions': [
             ['OS == "win"', {
-                'libraries': [
-                    '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/libpng15.lib',
-                    '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/zlib.lib'],
-                'include_dirs': [
-                    '<(THIRD_PATH)/libpng',
-                    '<(THIRD_PATH)/zlib']
             }, {
                 'libraries': [
                     '-lpng',
