@@ -140,8 +140,12 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
     in_buffer->length = in_length;
     in_buffer->bytes_read = 0;
 
-    pngquant_exec(in_buffer, out_buffer, argc, argv);
-
+    int ret = pngquant_exec(in_buffer, out_buffer, argc, argv);
+    if (ret != 0) {
+        out_buffer->png_data = in_buffer->png_data;
+        out_buffer->length = in_buffer->length;
+        fprintf(stderr, " File: %s\n", argv[argc-1]);
+    }
     buffer = Buffer::New((char *)out_buffer->png_data, out_buffer->length);
     free(in_buffer);
     free(out_buffer);
