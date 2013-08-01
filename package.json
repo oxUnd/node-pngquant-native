@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "install": "(node check.js && echo $? || node-gyp rebuild 2> builderr.log) || (exit 0)"
   },
   "repository": {
     "type": "git",
