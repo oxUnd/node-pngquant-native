@@ -493,8 +493,8 @@ void set_palette(png8_image* output_image, colormap* map)
 {
 	for (uint x=0; x<map->colors; ++x) {
 		colormap_item& pal = map->palette[x];
-		rgb_pixel px = to_rgb(output_image->gamma, lab2rgb(pal.acolor));
-		pal.acolor = rgb2lab(to_f(output_image->gamma, px)); /* saves rounding error introduced by to_rgb, which makes remapping & dithering more accurate */
+		rgb_pixel px = to_rgb(output_image->gamma, pal.acolor);
+		pal.acolor = to_f(output_image->gamma, px); /* saves rounding error introduced by to_rgb, which makes remapping & dithering more accurate */
 //		rgb_pixel px = to_rgb(output_image->gamma, pal.acolor);
 //		pal.acolor = to_f(output_image->gamma, px); /* saves rounding error introduced by to_rgb, which makes remapping & dithering more accurate */
 
@@ -535,7 +535,6 @@ double remap_to_palette(
 		for (uint col=0; col<cols; ++col) {
 
 			f_pixel px = to_f(gamma, inputLine[col]);
-			px = rgb2lab(px);
 			int match;
 
 			if (px.alpha < 1.0/256.0) {
@@ -625,7 +624,6 @@ void remap_to_palette_floyd(
 
 		do {
 			f_pixel px = to_f(gamma, inputLine[col]);
-			px = rgb2lab(px);
 
 			double dither_level = edge_map ? edge_map[row*cols + col] : 0.9;
 
@@ -1031,7 +1029,7 @@ void convert(const rgb_pixel*const apixels[], size_t cols, size_t rows, double g
 	for (size_t y=0; y<rows; ++y) {
 		const rgb_pixel* pSrc = apixels[y];
 		for (size_t x=0; x<cols; ++x) {
-			f_pixel lab = rgb2lab(to_f(gamma, pSrc[x]));
+			f_pixel lab = to_f(gamma, pSrc[x]);
 			pDst[x] = lab;
 //			pDst[x] = to_f(gamma, pSrc[x]);
 		}
@@ -1154,7 +1152,7 @@ pngquant_error pngquant(
 	
 	for (uint i=0; i<hist->size; ++i) {
 		hist_item& item = hist->achv[i];
-		item.acolor = rgb2lab(item.acolor);
+		item.acolor = item.acolor;
 	}
 	
 	double palette_error = -1;
