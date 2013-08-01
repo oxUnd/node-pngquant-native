@@ -70,7 +70,7 @@ static pngquant_error write_image(png8_image* output_image, png24_image* output_
 static char* add_filename_extension(const char* filename, const char* newext);
 static bool file_exists(const char* outname);
 
-static bool verbose = 1;
+static bool verbose = 0;
 /* prints only when verbose flag is set */
 void verbose_printf(const char* fmt, ...)
 {
