@@ -72,7 +72,7 @@ void PNGAPI png_defaultwrite_data(png_structp png_ptr, png_bytep data, png_size_
     }
 
     if(image->png_data == NULL){
-        len = PNG_INIT_FILE_SIZE + length;
+        len = length;
         if((image->png_data = (png_bytep) malloc(len)) == NULL){
           png_error(png_ptr, "Out of memory.");
         }
