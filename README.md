@@ -1,4 +1,5 @@
 ##node-pngquant-native
+[![NPM version](https://badge.fury.io/js/node-pngquant-native.png)](http://badge.fury.io/js/node-pngquant-native)
 
 node-pngquant-native是一个node的native插件，而不是调用命令行的方式，提升处理速率，有效的省去了调用外部程序产生的时间开销。
 
