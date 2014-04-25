@@ -10,6 +10,9 @@
 /build.sh
 /build.js
 /binding.debug.js
+/binding.gyp
+/install.js
+/src
 
 .DS_Store
 
