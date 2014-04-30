@@ -73,6 +73,6 @@ var resBuffer = pngquant.compress(buffer, option);
 
     ```javascript
     var opt = {
-        isbug: true
+        iebug: true
     }
     ```
