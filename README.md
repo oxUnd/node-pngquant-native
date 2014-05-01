@@ -1,16 +1,36 @@
 ## node-pngquant-native
 [![NPM version](https://badge.fury.io/js/node-pngquant-native.png)](http://badge.fury.io/js/node-pngquant-native)
 
-node-pngquant-native是一个node的native插件，而不是调用命令行的方式，提升处理速率，有效的省去了调用外部程序产生的时间开销。
+node-pngquant-native is an addon of node, support node version v0.8.0 to latest, It compress a `.png` image, not `exec` anthor
+process.
 
 ## install
 
     npm install -g node-pngquant-native
     
+
+## make
+
+if install fail for you, you can install require. then download the source install it.
+
+1. clone source code
+
+    ```bash
+    $ git clone https://github.com/xiangshouding/node-pngquant-native.git
+    ```
+
+2. invoke `npm install -g .`
+
+    ```bash
+    $ cd node-pngquant-native
+    $ npm install -g .
+    ```
+
 ### require
-+ 编译pngquant，编译器必须支持C99
-+ 符合[node-gyp环境要求](https://github.com/TooTallNate/node-gyp#installation)
-+ Windows用户，如果安装失败，请clone win32分支进行编译
+
++ make pngqunat, your compiler must support C99
++ install `node-gyp`, you can see detail information [https://github.com/TooTallNate/node-gyp#installation](https://github.com/TooTallNate/node-gyp#installation)
++ For WINDOWS user, please clone branch `win32`, because VS not support C99.
 
 ## use
 
