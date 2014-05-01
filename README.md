@@ -11,7 +11,7 @@ process.
 
 ## make
 
-if install fail for you, you can install require. then download the source install it.
+if install fail for you. download the source install it.
 
 1. clone source code
 
