@@ -1,7 +1,7 @@
 {
   "name": "node-pngquant-native",
-  "version": "0.0.7",
-  "description": "pngquant native plugin of node",
+  "version": "0.0.8",
+  "description": "A pngquant addon of node",
   "main": "index.js",
   "directories": {
     "test": "test"
