@@ -1,8 +1,7 @@
 ## node-pngquant-native
 [![NPM version](https://badge.fury.io/js/node-pngquant-native.png)](http://badge.fury.io/js/node-pngquant-native)
 
-node-pngquant-native is an addon of node, support node version v0.8.0 to latest, It compress a `.png` image, not `exec` anthor
-process.
+node-pngquant-native is an addon of node, support node version v0.8.0 to latest, It compress a `buffer` of `.png` image, so can't call other processes.
 
 ## install
 
