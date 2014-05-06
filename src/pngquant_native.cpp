@@ -150,7 +150,7 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
     buffer = Buffer::New((char *)out_buffer->png_data, out_buffer->length);
     free(in_buffer);
     free(out_buffer);
-
+    
     return scope.Close(
         buffer->handle_
     );
