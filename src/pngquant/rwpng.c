@@ -65,6 +65,7 @@ static void user_read_data(png_structp png_ptr, png_bytep data, png_size_t lengt
     if (read_data->bytes_read + length > read_data->length) {
         png_error(png_ptr, "Read error");
     }
+    
     memcpy(data, read_data->png_data + read_data->bytes_read, length);
     read_data->bytes_read += length;
 }

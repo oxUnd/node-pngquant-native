@@ -110,7 +110,7 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
         }
         i++;
     }
-
+    argv[0] = "pngquant";
     if ((len = strlen(token)) > 0) {
         argc++;
         argv[argc] = (char*) malloc(len + 1);
@@ -148,7 +148,6 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
     }
 
     buffer = Buffer::New((char *)out_buffer->png_data, out_buffer->length);
-
     free(in_buffer);
     free(out_buffer);
 

@@ -269,6 +269,7 @@ int pngquant(struct rwpng_data * in_buffer, struct rwpng_data *out_buffer, int a
     fix_obsolete_options(argc, argv);
 
     int opt;
+    optind = 0;
     do {
         opt = getopt_long(argc, argv, "Vvqfhs:Q:", long_options, NULL);
         switch (opt) {
@@ -342,6 +343,7 @@ int pngquant(struct rwpng_data * in_buffer, struct rwpng_data *out_buffer, int a
                 return INVALID_ARGUMENT;
         }
     } while (opt != -1);
+    
 
     int argn = optind;
 
@@ -521,6 +523,8 @@ int pngquant_file(struct rwpng_data *in_buffer, struct rwpng_data * out_buffer, 
         int write_retval = write_image(NULL, &input_image_rwpng, out_buffer, options);
         if (write_retval) retval = write_retval;
     }
+
+
 
     liq_image_destroy(input_image);
     pngquant_output_image_free(&output_image);
