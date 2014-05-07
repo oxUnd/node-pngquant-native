@@ -1,5 +1,6 @@
 #include <png.h>
 #include <stdlib.h>
+#include <string.h>
 #include <node_buffer.h>
 #include "pngquant/pngquant.h"
 #include "pngquant_native.h"
