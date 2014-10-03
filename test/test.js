@@ -19,10 +19,7 @@ fs.readFile('./alphatest.png', function (err, data) {
 
     console.log((new Date).getTime() - start);
     start = (new Date).getTime();
-    var buffer = C.compress(data, {
-        speed: 11,
-        quality: [50, 60]
-    });
+    var buffer = C.compress(data);
 
     console.log((new Date).getTime() - start);
 
