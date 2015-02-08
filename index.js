@@ -50,15 +50,14 @@ Pngquant.prototype = {
         return this;
     },
 
-    compress: function(buffer, opt, cb) {
-        cb = cb || function() {};
-        if (Object.prototype.toString.call(opt) == '[object Function]') {
-            cb = opt;
-        } else {
+    compress: function(buffer, opt) {
+        if (Object.prototype.toString.call(opt) == '[object Object]') {
             this.option(opt);
         }
+
         var handle = new _handle.Pngquant();
-        out = handle.compress(buffer, this.params, cb);
+        out = handle.compress(buffer, this.params);
+        
         return out;
     }
 };

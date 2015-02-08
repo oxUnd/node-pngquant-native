@@ -86,9 +86,9 @@ NAN_METHOD(Pngquant::Compress) {
     struct rwpng_data * out_buffer;
     struct rwpng_data * in_buffer;
 
-    if (args.Length() != 3) {
+    if (args.Length() != 2) {
         return NanThrowTypeError(
-            "Invalid argument, Need three arguments!"
+            "Invalid argument, Need two arguments!"
         );
     }
 
@@ -98,16 +98,9 @@ NAN_METHOD(Pngquant::Compress) {
         );
     }
 
-    if (!args[2]->IsFunction()) {
-        return NanThrowTypeError(
-            "Third argument must be a callback function."
-        );
-    }
-
     png_bytep in_stream = (png_bytep) Buffer::Data(args[0]->ToObject());
     unsigned in_length = Buffer::Length(args[0]->ToObject());
     Local<String> opt = args[1]->ToString();
-    Local<Function> callback = Local<Function>::Cast(args[2]);
 
     int i;
     char *argv[32];
