@@ -11,8 +11,10 @@ var fs = require("fs"),
  */
 vars = [
     '0.8.0',
-    '0.9.9'
+    '0.9.9',
+    '0.12.0'
 ];
+
 tryList = [
     path.join(__dirname, "build", "Release", name) // build dir
 ];
