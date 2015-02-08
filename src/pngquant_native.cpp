@@ -1,4 +1,6 @@
-#include <png.h>
+extern "C" {
+    #include "libpng/png.h"
+}
 #include <stdlib.h>
 #include <string.h>
 #include <node_buffer.h>
