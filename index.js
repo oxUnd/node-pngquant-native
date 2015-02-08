@@ -56,8 +56,8 @@ Pngquant.prototype = {
         }
 
         var handle = new _handle.Pngquant();
-        out = handle.compress(buffer, this.params);
-        
+        out = handle.compress(buffer, this.params, function nope(){});
+
         return out;
     }
 };

@@ -86,9 +86,9 @@ NAN_METHOD(Pngquant::Compress) {
     struct rwpng_data * out_buffer;
     struct rwpng_data * in_buffer;
 
-    if (args.Length() != 2) {
+    if (args.Length() != 3) {
         return NanThrowTypeError(
-            "Invalid argument, Need two arguments!"
+            "Invalid argument, Need three arguments!"
         );
     }
 
