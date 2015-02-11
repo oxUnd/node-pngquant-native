@@ -2,7 +2,7 @@
     'conditions': [
         ['OS=="win"', {
             'variables': {
-                'THIRD_PATH%': 'D:/dev/node/node-pngquant-native/third/'
+                'THIRD_PATH%': 'D:/addon/node-pngquant-native/third/'
             }
         }]
     ],
@@ -45,7 +45,7 @@
                     '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/zlib.lib'],
                 'include_dirs': [
                     '<(THIRD_PATH)/libpng',
-                    '<(THIRD_PATH)/zlib']
+                    '<(THIRD_PATH)/zlib-1.2.5']
             }, {
                 'libraries': [
                     '-lpng',

@@ -4,6 +4,9 @@
 #include "pngquant/pngquant.h"
 #include "pngquant_native.h"
 
+using namespace v8;
+using namespace node;
+
 Persistent<FunctionTemplate> Pngquant::constructor;
 
 void Pngquant::Init(Handle<Object> exports) {
@@ -29,7 +32,7 @@ void Pngquant::Init(Handle<Object> exports) {
 Pngquant::Pngquant():ObjectWrap() {
 }
 
-Handle<Value> Pngquant::New(const Arguments& args) {
+NAN_METHOD(Pngquant::New) {
     NanScope();
 
     if (!args.IsConstructCall()) {
@@ -46,7 +49,8 @@ Handle<Value> Pngquant::New(const Arguments& args) {
 
 
 NAN_METHOD(Pngquant::Compress) {
-    HandleScope scope;
+	NanScope();
+
     struct rwpng_data * out_buffer;
     struct rwpng_data * in_buffer;
 
@@ -65,7 +69,7 @@ NAN_METHOD(Pngquant::Compress) {
     png_bytep in_stream = (png_bytep) Buffer::Data(args[0]->ToObject());
     unsigned in_length = Buffer::Length(args[0]->ToObject());
     Local<String> opt = args[1]->ToString();
-    Local<Function> callback = Local<Function>::Cast(args[2]);
+
 
     char str_buffer[BUFFER_SIZE];
     memset(str_buffer, '\0', BUFFER_SIZE);
