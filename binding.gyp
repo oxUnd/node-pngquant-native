@@ -42,7 +42,8 @@
             'src/libpng/pngwutil.c',
         ],  
         "include_dirs": [
-            "<!(node -e \"require('nan')\")"
+            "<!(node -e \"require('nan')\")",
+	    "./src/libpng"
         ],
         'conditions': [
             ['OS == "win"', {
