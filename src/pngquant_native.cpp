@@ -4,40 +4,36 @@
 #include "pngquant/pngquant.h"
 #include "pngquant_native.h"
 
-using namespace v8;
-using namespace node;
-
 Persistent<FunctionTemplate> Pngquant::constructor;
 
 void Pngquant::Init(Handle<Object> exports) {
-    HandleScope scope;
+    NanScope();
 
-    Local<FunctionTemplate> tpl = FunctionTemplate::New(New);
-    Local<String> name = String::NewSymbol("Pngquant");
+    Local<FunctionTemplate> tpl = NanNew<FunctionTemplate>(New);
+    Local<String> name = NanNew("Pngquant");
 
-    constructor = Persistent<FunctionTemplate>::New(tpl);
     // ObjectWrap uses the first internal field to store the wrapped pointer.
-    constructor->InstanceTemplate()->SetInternalFieldCount(1);
-    constructor->SetClassName(name);
+    tpl->InstanceTemplate()->SetInternalFieldCount(1);
+    tpl->SetClassName(name);
 
     // Add all prototype methods, getters and setters here.
-    NODE_SET_PROTOTYPE_METHOD(constructor, "compress", Compress);
+    NODE_SET_PROTOTYPE_METHOD(tpl, "compress", Compress);
+
+    NanAssignPersistent(constructor, tpl);
 
     // This has to be last, otherwise the properties won't show up on the
     // object in JavaScript.
-    exports->Set(name, constructor->GetFunction());
+    exports->Set(name, tpl->GetFunction());
 }
 
 Pngquant::Pngquant():ObjectWrap() {
 }
 
 Handle<Value> Pngquant::New(const Arguments& args) {
-    HandleScope scope;
+    NanScope();
 
     if (!args.IsConstructCall()) {
-        return ThrowException(Exception::TypeError(
-            String::New("Use the new operator to create instances of this object."))
-        );
+        return NanThrowTypeError("Use the new operator to create instances of this object.");
     }
 
       // Creates a new instance object of this type and wraps it.
@@ -45,34 +41,25 @@ Handle<Value> Pngquant::New(const Arguments& args) {
 
     obj->Wrap(args.This());
 
-    return args.This();
+    NanReturnThis();
 }
 
 
-Handle<Value> Pngquant::Compress(const Arguments& args) {
+NAN_METHOD(Pngquant::Compress) {
     HandleScope scope;
     struct rwpng_data * out_buffer;
     struct rwpng_data * in_buffer;
 
     if (args.Length() != 3) {
-        return ThrowException(Exception::TypeError(
-                String::New("Invalid argument, Need three arguments!")
-            )
-        );
+        return NanThrowTypeError("Invalid argument, Need three arguments!");
     }
 
     if (!Buffer::HasInstance(args[0])) {
-        return ThrowException(Exception::TypeError(
-                String::New("First argument must be a buffer.")
-            )
-        );
+        return NanThrowTypeError("First argument must be a buffer.");
     }
 
     if (!args[2]->IsFunction()) {
-        return ThrowException(Exception::TypeError(
-                String::New("Third argument must be a callback function.")
-            )
-        );
+        return NanThrowTypeError("Third argument must be a callback function.");
     }
 
     png_bytep in_stream = (png_bytep) Buffer::Data(args[0]->ToObject());
@@ -80,7 +67,6 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
     Local<String> opt = args[1]->ToString();
     Local<Function> callback = Local<Function>::Cast(args[2]);
 
-    Buffer *buffer;
     char str_buffer[BUFFER_SIZE];
     memset(str_buffer, '\0', BUFFER_SIZE);
 
@@ -120,18 +106,15 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
     }
 
     in_buffer = (struct rwpng_data *)malloc(sizeof(struct rwpng_data));
+
     if (in_buffer == NULL) {
-        return ThrowException(Exception::TypeError(
-                String::New("malloc fail!")
-            )
-        );
+        return NanThrowTypeError("malloc fail!");
     }
+
     out_buffer = (struct rwpng_data *)malloc(sizeof(struct rwpng_data));
+
     if (out_buffer == NULL) {
-        return ThrowException(Exception::TypeError(
-                String::New("malloc fail!")
-            )
-        );
+        return NanThrowTypeError("malloc fail!");
     }
 
     memset(out_buffer, '\0', sizeof(struct rwpng_data));
@@ -146,14 +129,14 @@ Handle<Value> Pngquant::Compress(const Arguments& args) {
         out_buffer->length = in_buffer->length;
         fprintf(stderr, " File: %s\n", argv[argc-1]);
     }
-    buffer = Buffer::New((char *)out_buffer->png_data, out_buffer->length);
+
+    Local<Object> buffer = NanNewBufferHandle((char *)out_buffer->png_data, out_buffer->length);
     free(in_buffer);
     free(out_buffer);
 
-    return scope.Close(
-        buffer->handle_
-    );
+    NanReturnValue(buffer);
 }
+
 extern "C" {
     void RegisterModule(Handle<Object> exports) {
         Pngquant::Init(exports);

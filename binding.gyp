@@ -35,6 +35,9 @@
             'src/pngquant/viter.cpp',
             'src/pngquant/nearest.cpp', 
         ],
+        'include_dirs': [
+            "<!(node -e \"require('nan')\")"
+        ],
         'conditions': [
             ['OS == "win"', {
                 'libraries': [

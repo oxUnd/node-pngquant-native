@@ -27,5 +27,8 @@
   "gypfile": true,
   "bugs": {
     "url": "https://github.com/xiangshouding/node-pngcrush-native/issues"
+  },
+  "dependencies": {
+    "nan": "^1.6.2"
   }
 }
