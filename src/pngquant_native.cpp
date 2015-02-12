@@ -1,5 +1,5 @@
 extern "C" {
-    #include "libpng/png.h"
+    #include <png.h>
 }
 
 #include <stdlib.h>
