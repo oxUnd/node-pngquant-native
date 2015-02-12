@@ -38,18 +38,13 @@
         'include_dirs': [
             "<!(node -e \"require('nan')\")"
         ],
+        'dependencies': [
+            './gyp/gyp/libpng.gyp:libpng'
+        ],
         'conditions': [
             ['OS == "win"', {
-                'libraries': [
-                    '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/libpng15.lib',
-                    '-l<(THIRD_PATH)/libpng/projects/vstudio/ReleaseLibrary/zlib.lib'],
-                'include_dirs': [
-                    '<(THIRD_PATH)/libpng',
-                    '<(THIRD_PATH)/zlib-1.2.5']
             }, {
                 'libraries': [
-                    '-lpng',
-                    '-lz',
                     '-lm'
                 ]
             }]
