@@ -26,7 +26,7 @@
             'src/pngquant/lib/libimagequant.c',
         ],  
         "dependencies": [
-            "./gyp/gyp/zlib.gyp:zlib"
+            "./gyp/gyp/libpng.gyp:libpng"
         ],
         "include_dirs": [
             "<!(node -e \"require('nan')\")",
