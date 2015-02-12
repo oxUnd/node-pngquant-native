@@ -1,8 +1,0 @@
-﻿生成启动时间为 2013/7/18 12:56:23。
-     1>项目“D:\dev\node\node-images\third\libpng\projects\vstudio\pngvalid\pngvalid.vcxproj”在节点 3 上(Build 个目标)。
-     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.Platform.targets(42,5): error MSB8020: The builds tools for Visual Studio 2010 (Platform Toolset = 'v100') cannot be found. To build using the v100 build tools, either click the Project menu or right-click the solution, and then select "Update VC++ Projects...". Install Visual Studio 2010 to build using the Visual Studio 2010 build tools.
-     1>已完成生成项目“D:\dev\node\node-images\third\libpng\projects\vstudio\pngvalid\pngvalid.vcxproj”(Build 个目标)的操作 - 失败。
-
-生成失败。
-
-已用时间 00:00:00.05

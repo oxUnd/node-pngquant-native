@@ -1,0 +1,3 @@
+[submodule "gyp"]
+	path = gyp
+	url = http://github.com/xiangshouding/gyp
