@@ -39,7 +39,8 @@
             "<!(node -e \"require('nan')\")"
         ],
         'dependencies': [
-            './gyp/gyp/libpng.gyp:libpng'
+            './gyp/gyp/libpng.gyp:libpng',
+            './gyp/gyp/zlib.gyp:zlib'
         ],
         'conditions': [
             ['OS == "win"', {
