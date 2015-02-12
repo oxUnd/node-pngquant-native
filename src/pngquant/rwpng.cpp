@@ -224,7 +224,7 @@ pngquant_error rwpng_read_image24(struct rwpng_data *in_buffer, png24_image* mai
 }
 
 
-pngquant_error rwpng_write_image_init(png_image* mainprog_ptr, png_structpp png_ptr_p, png_infopp info_ptr_p, struct rwpng_data *out_buffer)
+pngquant_error rwpng_write_image_init(png_image_* mainprog_ptr, png_structpp png_ptr_p, png_infopp info_ptr_p, struct rwpng_data *out_buffer)
 {
 	/* could also replace libpng warning-handler (final NULL), but no need: */
 
@@ -269,7 +269,7 @@ pngquant_error rwpng_write_image_init(png_image* mainprog_ptr, png_structpp png_
 }
 
 
-void rwpng_write_end(png_infopp info_ptr_p, png_structpp png_ptr_p, png_image* mainprog_ptr)
+void rwpng_write_end(png_infopp info_ptr_p, png_structpp png_ptr_p, png_image_* mainprog_ptr)
 {
     png_write_info(*png_ptr_p, *info_ptr_p);
 
@@ -288,7 +288,7 @@ pngquant_error rwpng_write_image8(struct rwpng_data *out_buffer, png8_image* mai
     png_structp png_ptr;
     png_infop info_ptr;
 
-    pngquant_error retval = rwpng_write_image_init((png_image*)mainprog_ptr, &png_ptr, &info_ptr, out_buffer);
+    pngquant_error retval = rwpng_write_image_init((png_image_*)mainprog_ptr, &png_ptr, &info_ptr, out_buffer);
     if (retval) return retval;
 
 	/* set the image parameters appropriately */
@@ -312,7 +312,7 @@ pngquant_error rwpng_write_image8(struct rwpng_data *out_buffer, png8_image* mai
 	if (mainprog_ptr->num_trans > 0)
 		png_set_tRNS(png_ptr, info_ptr, mainprog_ptr->trans, mainprog_ptr->num_trans, NULL);
 
-    rwpng_write_end(&info_ptr, &png_ptr, (png_image*)mainprog_ptr);
+    rwpng_write_end(&info_ptr, &png_ptr, (png_image_*)mainprog_ptr);
 
 	return SUCCESS;
 }
@@ -322,7 +322,7 @@ pngquant_error rwpng_write_image24(struct rwpng_data * out_buffer, png24_image* 
     png_structp png_ptr;
     png_infop info_ptr;
 
-    pngquant_error retval = rwpng_write_image_init((png_image*)mainprog_ptr, &png_ptr, &info_ptr, out_buffer);
+    pngquant_error retval = rwpng_write_image_init((png_image_*)mainprog_ptr, &png_ptr, &info_ptr, out_buffer);
     if (retval) return retval;
 
     png_set_IHDR(png_ptr, info_ptr, mainprog_ptr->width, mainprog_ptr->height,
@@ -331,7 +331,7 @@ pngquant_error rwpng_write_image24(struct rwpng_data * out_buffer, png24_image* 
                  PNG_FILTER_TYPE_BASE);
 
 
-    rwpng_write_end(&info_ptr, &png_ptr, (png_image*)mainprog_ptr);
+    rwpng_write_end(&info_ptr, &png_ptr, (png_image_*)mainprog_ptr);
 
 	return SUCCESS;
 }
@@ -340,7 +340,7 @@ pngquant_error rwpng_write_image24(struct rwpng_data * out_buffer, png24_image* 
 static
 void rwpng_error_handler(png_structp png_ptr, png_const_charp msg)
 {
-    png_image* mainprog_ptr;
+    png_image_* mainprog_ptr;
 
 	/* This function, aside from the extra step of retrieving the "error
 	 * pointer" (below) and the fact that it exists within the application
@@ -354,7 +354,7 @@ void rwpng_error_handler(png_structp png_ptr, png_const_charp msg)
     fprintf(stderr, "  error: %s\n", msg);
 	fflush(stderr);
 
-    mainprog_ptr = (png_image*) png_get_error_ptr(png_ptr);
+    mainprog_ptr = (png_image_*) png_get_error_ptr(png_ptr);
     if (mainprog_ptr == NULL) abort();
 
 	longjmp(mainprog_ptr->jmpbuf, 1);

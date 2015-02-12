@@ -73,7 +73,7 @@ struct png8_image {
     unsigned char trans[256];
 };
 
-union png_image {
+union png_image_ {
     jmp_buf jmpbuf;
     png24_image png24;
     png8_image png8;
