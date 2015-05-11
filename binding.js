@@ -26,7 +26,7 @@ var pkgInf = require('./package.json');
 var bindingMap = pkgInf.bindingMap;
 var bugUrl = pkgInf['bugs'] ? (pkgInf['bugs']['url'] || '') : '';
 
-for ( var i in bindingMap)  {
+for ( var i in bindingMap) {
     if (bindingMap.hasOwnProperty(i)) {
         var target = i;
         var versions = bindingMap[i];
