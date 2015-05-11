@@ -2,6 +2,7 @@
 /.settings
 /.project
 
+node_modules
 tmp
 ~*
 *.db
