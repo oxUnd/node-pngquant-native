@@ -1,6 +1,6 @@
 {
     'targets': [{
-        'target_name': 'pngquant_native',
+        'target_name': 'addon',
         'cflags': [
             '-DNO_ALONE',
             '-DDEBUG',
@@ -14,7 +14,8 @@
             '-std=c99'
         ],
         'sources': [
-            'src/pngquant_native.cpp',
+            'src/binding.cpp',
+            'src/Compress.cpp',
             'src/pngquant/pngquant.c',
             'src/pngquant/rwpng.c',
             'src/pngquant/lib/pam.c',

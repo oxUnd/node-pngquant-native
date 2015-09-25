@@ -2,8 +2,13 @@
 'use strict';
 
 var fs = require('fs');
+var bindName = 'pngquant_native';
 
-var buildModule = __dirname + '/build/Release/pngquant_native.node';
+if (compiler(process.versions.node, '4.0.0') != -1) {
+    bindName = 'addon';
+}
+
+var buildModule = __dirname + '/build/Release/' + bindName + '.node';
 
 if (fs.existsSync(buildModule)) {
     try {

@@ -42,6 +42,6 @@
     "url": "https://github.com/xiangshouding/node-pngquant-native/issues"
   },
   "dependencies": {
-    "nan": "^1.6.2"
+    "nan": "^2.0.9"
   }
 }
