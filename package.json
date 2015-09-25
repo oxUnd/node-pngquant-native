@@ -1,6 +1,6 @@
 {
   "name": "node-pngquant-native",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "A pngquant addon of node",
   "main": "index.js",
   "directories": {
