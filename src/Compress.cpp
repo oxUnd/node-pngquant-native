@@ -48,7 +48,6 @@ namespace Compress {
 
   void Compress::New(const FunctionCallbackInfo<Value> &args) {
     Isolate *isolate = args.GetIsolate();
-    printf("%d", args.Length());
     if (args.IsConstructCall()) {
       char *buf = (char *) node::Buffer::Data(args[0]);
       unsigned buf_length = node::Buffer::Length(args[0]);
