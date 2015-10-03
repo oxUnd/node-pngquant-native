@@ -1,42 +1,66 @@
-var fs = require("fs"),
-    path = require("path"),
-    name = "pngquant_native.node",
-    tryList, i, count, file;
-/**
- *  0.8.0-0.8.25 : 0.8.0
- *  0.9.9-0.10.13 : 0.9.9
- *  0.9.2-0.9.8: 0.9.2
- *  0.9.1-0.9.1: 0.9.1
- *  0.9.0-0.9.0: 0.9.0
- */
-vars = [
-    '0.8.0',
-    '0.9.9'
-];
-tryList = [
-    path.join(__dirname, "build", "Release", name) // build dir
-];
 
-for (i = 0, count = vars.length; i < count; i++) {
-    tryList.push(path.join(__dirname, "lib", process.platform, vars[i], name));
+'use strict';
+
+var fs = require('fs');
+var bindName = 'pngquant_native';
+
+if (compiler(process.versions.node, '4.0.0') != -1) {
+    bindName = 'addon';
 }
 
+var buildModule = __dirname + '/build/Release/' + bindName + '.node';
 
-count = tryList.length;
-for (i = 0; i < count; i++) {
-    file = tryList[i];
-    if (fs.existsSync(file)) {
-        try {
-            exports = require(file);
-        } catch (e) {
-            continue; // try next
+if (fs.existsSync(buildModule)) {
+    try {
+        module.exports = require(buildModule);
+    } catch (e) {
+        console.log('Cant\'t load `.node` module ' + buildModule);
+        throw e;
+    }
+    return;
+}
+
+function compiler(a, b) {
+
+    if (!/^(?:\d+.?)+$/.test(a) || !/^(?:\d+.?)+/.test(b)) {
+        return a > b;
+    }
+
+    var aArr = a.split('.');
+    var bArr = b.split('.');
+    var max = Math.max(aArr.length, bArr.length);
+
+    for (var i = 0; i < max; i++) {
+        if ((aArr[i] && !bArr[i])  || aArr[i] > bArr[i]) {
+            return 1;
+        } else if ((!aArr[i] && bArr[i]) || aArr[i] < bArr[i]) {
+            return -1;
         }
-        break;
+    }
+
+    return 0;
+}
+
+var pkgInf = require('./package.json');
+var bindingMap = pkgInf.bindingMap;
+var bugUrl = pkgInf['bugs'] ? (pkgInf['bugs']['url'] || '') : '';
+
+for ( var i in bindingMap) {
+    if (bindingMap.hasOwnProperty(i)) {
+        var target = i;
+        var versions = bindingMap[i];
+
+        var cur = process.versions['node'];
+
+        if (compiler(versions[0], cur) <= 0 && compiler(versions[1], cur) >= 0) {
+            try {
+                module.exports = require('./bindings/'+ process.platform + '/' + process.arch + '/' + target + '/pngquant_native.node');
+                return;
+            } catch ( e ) {
+                throw new Error('Can\'t load the addon. Issue to: ' + bugUrl + ' ' + e.stack);
+            }
+        }
     }
 }
 
-if (exports && exports.Pngquant) {
-    module.exports = exports;
-} else {
-    throw new Error("Can't load addon.");
-}
+throw new Error('Can\'t load the addon. Issue to: ' + bugUrl);

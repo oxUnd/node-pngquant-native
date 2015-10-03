@@ -1,18 +1,36 @@
 {
   "name": "node-pngquant-native",
-  "version": "0.0.1",
-  "description": "pngquant native plugin of node",
+  "version": "1.0.0",
+  "description": "A pngquant addon of node",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
+  "bindingMap": {
+    "0.8.0": [
+      "0.8.0",
+      "0.8.25"
+    ],
+    "0.9.9": [
+      "0.10.0",
+      "0.10.99"
+    ],
+    "0.12.0": [
+      "0.12.0",
+      "0.12.99"
+    ],
+    "4.0.0": [
+      "4.0.0",
+      "4.20.20"
+    ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "install": "echo \"Hello, World\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiangshouding/node-pngcrush-native.git"
+    "url": "https://github.com/xiangshouding/node-pngquant-native.git"
   },
   "keywords": [
     "fis",
@@ -24,11 +42,9 @@
   ],
   "author": "xiangshouding <xiangshouding@baidu.com>",
   "license": "MIT",
-  "gypfile": true,
   "bugs": {
-    "url": "https://github.com/xiangshouding/node-pngcrush-native/issues"
+    "url": "https://github.com/xiangshouding/node-pngquant-native/issues"
   },
   "dependencies": {
-    "nan": "^1.6.2"
   }
 }
