@@ -30,7 +30,6 @@
             "./gyp/gyp/libpng.gyp:libpng"
         ],
         "include_dirs": [
-            "<!(node -e \"require('nan')\")",
         ],
         'conditions': [
             ['OS == "win"', {
