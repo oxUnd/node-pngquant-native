@@ -12,7 +12,6 @@
         'cflags': [
             '-g',
             '-DNO_ALONE',
-            '-DDEBUG',
             '-fno-inline',
             '-O0',
             '-fstrict-aliasing', 
@@ -24,7 +23,8 @@
 
         ],
         'sources': [
-            'src/pngquant_native.cpp',
+            'Compress.cpp',
+            'binding.cpp',
             'src/pngquant/pngquant.cpp',
             'src/pngquant/getopt.c',
             'src/pngquant/rwpng.cpp',
@@ -36,7 +36,6 @@
             'src/pngquant/nearest.cpp', 
         ],
         'include_dirs': [
-            "<!(node -e \"require('nan')\")"
         ],
         'dependencies': [
             './gyp/gyp/libpng.gyp:libpng',
