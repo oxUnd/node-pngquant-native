@@ -7,8 +7,7 @@
         }]
     ],
     'targets': [{
-
-        'target_name': 'pngquant_native',
+        'target_name': 'addon',
         'cflags': [
             '-g',
             '-DNO_ALONE',
@@ -23,8 +22,8 @@
 
         ],
         'sources': [
-            'Compress.cpp',
-            'binding.cpp',
+            'src/Compress.cpp',
+            'src/binding.cpp',
             'src/pngquant/pngquant.cpp',
             'src/pngquant/getopt.c',
             'src/pngquant/rwpng.cpp',
