@@ -54,7 +54,7 @@ for ( var i in bindingMap) {
 
         if (compiler(versions[0], cur) <= 0 && compiler(versions[1], cur) >= 0) {
             try {
-                module.exports = require('./bindings/'+ process.platform + '/' + process.arch + '/' + target + '/pngquant_native.node');
+                module.exports = require('./bindings/'+ process.platform + '/' + process.arch + '/' + target + '/' + bindName + '.node');
                 return;
             } catch ( e ) {
                 throw new Error('Can\'t load the addon. Issue to: ' + bugUrl + ' ' + e.stack);
