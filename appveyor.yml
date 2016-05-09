@@ -1,0 +1,23 @@
+environment:
+  matrix:
+  - nodejs_version: "4.0"
+  - nodejs_version: "6.0"
+
+platform:
+  - x64
+  - x86
+
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  # install modules
+  - git submodule update --init --recursive
+  - npm install -g node-gyp
+  - node-gyp rebuild
+
+os: Visual Studio 2015
+
+# Don't actually build.
+build: off
+
+artifacts:
+  - path: 'build\Release\addon.node'
