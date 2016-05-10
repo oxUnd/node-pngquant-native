@@ -125,7 +125,7 @@ namespace Compress {
     // invoke pngquant compress buffer
     char c_args[ARGS_SIZE];
     memset(c_args, '\0', ARGS_SIZE);
-    strcpy(c_args, "pngqaunt ");
+    strcpy(c_args, "-f pngqaunt ");
     strcat(c_args, obj->_args);
 
 
