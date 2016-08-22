@@ -51,6 +51,7 @@ Pngquant.prototype = {
     },
 
     compress: function(buffer, opt) {
+        var out;
         if (Object.prototype.toString.call(opt) == '[object Object]') {
             this.option(opt);
         }
