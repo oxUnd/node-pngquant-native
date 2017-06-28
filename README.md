@@ -95,3 +95,9 @@ var resBuffer = pngquant.compress(buffer, option);
         iebug: true
     }
     ```
+
+## ChangeLog
+
+### 1.0.5
+
+- support node 8.x on MacOS

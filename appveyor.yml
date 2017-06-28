@@ -2,6 +2,7 @@ environment:
   matrix:
   - nodejs_version: "4.0"
   - nodejs_version: "6.0"
+  - nodejs_version: "8.0"
 
 platform:
   - x64
@@ -11,6 +12,7 @@ install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   # install modules
   - git submodule update --init --recursive
+  - cd gyp && sh third-party.sh && cd -
   - npm install -g node-gyp
   - node-gyp rebuild
 
