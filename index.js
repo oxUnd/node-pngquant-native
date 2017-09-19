@@ -1,4 +1,4 @@
-var _handle = require('./binding.js');
+var _handle = require('./scripts/util/binding.js')();
 
 function Pngquant() {
     this.params = '';
