@@ -1,12 +1,12 @@
 {
   "name": "node-pngquant-native",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A pngquant addon of node",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
-  "packageName": "xiangshouding/node-pngquant-native",
+  "repositoryName": "xiangshouding/node-pngquant-native",
   "scripts": {
     "test": "node ./test/test.js",
     "install": "node ./scripts/install.js"
