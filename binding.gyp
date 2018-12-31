@@ -1,6 +1,6 @@
 {
     'targets': [{
-        'target_name': 'addon',
+        'target_name': 'binding',
         'cflags': [
             '-DNO_ALONE',
             '-DDEBUG',
@@ -14,8 +14,8 @@
             '-std=c99'
         ],
         'sources': [
-            'src/binding.cpp',
-            'src/Compress.cpp',
+            'src/binding.cc',
+            'src/PQCompress.cc',
             'src/pngquant/pngquant.c',
             'src/pngquant/rwpng.c',
             'src/pngquant/lib/pam.c',

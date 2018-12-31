@@ -56,7 +56,9 @@ Pngquant.prototype = {
             this.option(opt);
         }
 
-        if (process.versions.node >= '4.0.0') {
+        if (process.versions.node >= '10.0.0') {
+            out = (new _handle.Pngquant(buffer, this.params)).compress();
+        } else if (process.versions.node >= '4.0.0') {
             out = (new _handle(buffer, this.params)).compress();
         } else {
             var handle = new _handle.Pngquant();
