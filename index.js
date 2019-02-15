@@ -1,3 +1,4 @@
+var semver = require('semver');
 var _handle = require('./scripts/util/binding.js')();
 
 function Pngquant() {
@@ -56,9 +57,9 @@ Pngquant.prototype = {
             this.option(opt);
         }
 
-        if (process.versions.node >= '10.0.0') {
+        if (semver.gte(process.versions.node, '10.0.0')) {
             out = (new _handle.Pngquant(buffer, this.params)).compress();
-        } else if (process.versions.node >= '4.0.0') {
+        } else if (semver.gte(process.versions.node, '4.0.0')) {
             out = (new _handle(buffer, this.params)).compress();
         } else {
             var handle = new _handle.Pngquant();
