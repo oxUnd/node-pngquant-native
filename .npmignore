@@ -13,6 +13,7 @@
 /binding.gyp
 /install.js
 /src
+/gyp
 
 .DS_Store
 
