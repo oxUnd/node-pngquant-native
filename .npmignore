@@ -14,6 +14,7 @@
 /install.js
 /src
 /gyp
+/.vscode
 
 .DS_Store
 
