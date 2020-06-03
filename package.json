@@ -9,7 +9,7 @@
   "repositoryName": "xiangshouding/node-pngquant-native",
   "scripts": {
     "test": "node ./test/test.js",
-    "install": "node ./scripts/install.js"
+    "install": "node ./scripts/nothing.js"
   },
   "repository": {
     "type": "git",
@@ -29,11 +29,6 @@
     "url": "https://github.com/xiangshouding/node-pngquant-native/issues"
   },
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "nan": "^2.3.2",
-    "node-gyp": "^3.3.1",
-    "npmlog": "^4.0.0",
-    "request": "^2.88.0",
     "semver": "^5.6.0"
   }
 }

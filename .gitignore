@@ -1,6 +1,8 @@
 /.idea
 /.settings
 /.project
+/.vscode
+/package-lock.json
 
 node_modules
 tmp
